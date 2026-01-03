@@ -1,0 +1,883 @@
+# 🪟 PLC Core
+
+<div align="center">
+
+**A React component library inspired by Apple's Liquid Glass design language**
+
+[![npm](https://img.shields.io/npm/v/plc-core?color=CB3837&logo=npm)](https://www.npmjs.com/package/plc-core)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+Beautiful, modern UI components with that signature frosted glass aesthetic.
+
+</div>
+
+---
+
+## 🎯 Overview
+
+**PLC Core** is a comprehensive React component library inspired by Apple's Liquid Glass design language. It provides a complete set of UI components with glassmorphism styling, built with modern web technologies and optimized for performance.
+
+### ✨ Key Features
+
+- 🪟 **Liquid Glass** - Frosted glass effects with blur and transparency
+- ⚡ **Lightweight** - Tree-shakeable ESM and CJS bundles
+- 🎨 **Customizable** - Built with Tailwind CSS v4 for easy theming
+- 📦 **TypeScript** - Full type definitions included
+- 🌙 **Dark Mode** - Built-in dark mode support
+- ♿ **Accessible** - WCAG compliant components
+- 📱 **Responsive** - Mobile-first design approach
+
+---
+
+## 📦 Installation
+
+```bash
+npm install plc-core
+```
+
+### Peer Dependencies
+
+This library requires React 17+ and React DOM 17+:
+
+```bash
+npm install react react-dom
+```
+
+---
+
+## 🚀 Quick Start
+
+### Basic Usage
+
+```tsx
+import { Button, Card, Shell } from "plc-core";
+import "plc-core/styles.css";
+
+function App() {
+  return (
+    <Shell
+      header={<Header>My App</Header>}
+      footer={<Footer>Footer</Footer>}
+    >
+      <Card variant="glass">
+        <Button variant="glass">Click me</Button>
+      </Card>
+    </Shell>
+  );
+}
+```
+
+### Import Styles
+
+Don't forget to import the CSS file:
+
+```tsx
+import "plc-core/styles.css";
+```
+
+Or in your main CSS file:
+
+```css
+@import "plc-core/styles.css";
+```
+
+---
+
+## 📚 Components
+
+### 🎨 Core Components
+
+#### Button
+
+Versatile button component with multiple variants.
+
+```tsx
+import { Button } from "plc-core";
+
+<Button variant="glass" type="button" onClick={() => {}}>
+  Click me
+</Button>
+```
+
+**Variants:** `glass`, `glass-highlight`, `icon`, `text`, `outline`
+
+#### Card
+
+Container component with glassmorphism styling.
+
+```tsx
+import { Card } from "plc-core";
+
+<Card variant="glass" header={<h2>Title</h2>} footer={<Button>Action</Button>}>
+  Card content
+</Card>
+```
+
+**Variants:** `glass`, `glass-highlight`, `flat`
+
+#### Loading
+
+Loading indicator component.
+
+```tsx
+import { Loading } from "plc-core";
+
+<Loading variant="glass" />
+```
+
+**Variants:** `glass`, `primary`
+
+---
+
+### 📝 Form Components
+
+#### Input
+
+Text input field with glass styling.
+
+```tsx
+import { Input } from "plc-core";
+
+<Input
+  type="text"
+  placeholder="Enter text"
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+/>
+```
+
+#### Textarea
+
+Multi-line text input.
+
+```tsx
+import { Textarea } from "plc-core";
+
+<Textarea
+  placeholder="Enter message"
+  rows={4}
+  value={value}
+  onChange={(e) => setValue(e.target.value)}
+/>
+```
+
+#### Select
+
+Dropdown select component.
+
+```tsx
+import { Select } from "plc-core";
+
+<Select
+  items={[
+    { value: "1", label: "Option 1" },
+    { value: "2", label: "Option 2" },
+  ]}
+  value={selected}
+  onChange={setSelected}
+/>
+```
+
+#### Checkbox
+
+Checkbox input.
+
+```tsx
+import { Checkbox } from "plc-core";
+
+<Checkbox
+  checked={checked}
+  onChange={(e) => setChecked(e.target.checked)}
+  label="Accept terms"
+/>
+```
+
+#### Radio
+
+Radio button group.
+
+```tsx
+import { Radio } from "plc-core";
+
+<Radio
+  name="option"
+  value={value}
+  onChange={setValue}
+  options={[
+    { value: "1", label: "Option 1" },
+    { value: "2", label: "Option 2" },
+  ]}
+/>
+```
+
+#### Switch
+
+Toggle switch component.
+
+```tsx
+import { Switch } from "plc-core";
+
+<Switch
+  checked={enabled}
+  onChange={setEnabled}
+  label="Enable feature"
+/>
+```
+
+#### Slider
+
+Range slider input.
+
+```tsx
+import { Slider } from "plc-core";
+
+<Slider
+  min={0}
+  max={100}
+  value={value}
+  onChange={setValue}
+/>
+```
+
+#### NumberInput
+
+Numeric input with increment/decrement controls.
+
+```tsx
+import { NumberInput } from "plc-core";
+
+<NumberInput
+  min={0}
+  max={100}
+  value={value}
+  onChange={setValue}
+/>
+```
+
+#### PasswordInput
+
+Password input with show/hide toggle.
+
+```tsx
+import { PasswordInput } from "plc-core";
+
+<PasswordInput
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
+```
+
+#### SegmentedControl
+
+Segmented control for selecting options.
+
+```tsx
+import { SegmentedControl } from "plc-core";
+
+<SegmentedControl
+  value={selected}
+  onChange={setSelected}
+  options={["Option 1", "Option 2", "Option 3"]}
+/>
+```
+
+---
+
+### 📊 Data Display
+
+#### Table
+
+Data table component.
+
+```tsx
+import { Table } from "plc-core";
+
+<Table
+  headers={["Name", "Email", "Role"]}
+  rows={[
+    ["John Doe", "john@example.com", "Admin"],
+    ["Jane Smith", "jane@example.com", "User"],
+  ]}
+/>
+```
+
+#### Progress
+
+Progress bar component.
+
+```tsx
+import { Progress } from "plc-core";
+
+<Progress value={75} max={100} />
+```
+
+#### Skeleton
+
+Loading skeleton placeholder.
+
+```tsx
+import { Skeleton } from "plc-core";
+
+<Skeleton width="200px" height="20px" />
+```
+
+#### Badge
+
+Badge component for labels and tags.
+
+```tsx
+import { Badge } from "plc-core";
+
+<Badge variant="glass">New</Badge>
+```
+
+**Variants:** `glass`, `primary`, `success`, `warning`, `error`
+
+#### Avatar
+
+User avatar component.
+
+```tsx
+import { Avatar } from "plc-core";
+
+<Avatar src="/avatar.jpg" alt="User" size="md" />
+```
+
+#### Alert
+
+Alert message component.
+
+```tsx
+import { Alert } from "plc-core";
+
+<Alert variant="info" title="Information">
+  This is an alert message.
+</Alert>
+```
+
+**Variants:** `info`, `success`, `warning`, `error`
+
+#### Accordion
+
+Collapsible content sections.
+
+```tsx
+import { Accordion } from "plc-core";
+
+<Accordion
+  items={[
+    { title: "Section 1", content: "Content 1" },
+    { title: "Section 2", content: "Content 2" },
+  ]}
+/>
+```
+
+---
+
+### 🧭 Navigation & Overlay
+
+#### Tabs
+
+Tab navigation component.
+
+```tsx
+import { Tabs } from "plc-core";
+
+<Tabs
+  tabs={[
+    { id: "1", label: "Tab 1", content: <div>Content 1</div> },
+    { id: "2", label: "Tab 2", content: <div>Content 2</div> },
+  ]}
+  activeTab="1"
+  onChange={setActiveTab}
+/>
+```
+
+#### Menu
+
+Dropdown menu component.
+
+```tsx
+import { Menu } from "plc-core";
+
+<Menu
+  items={[
+    { label: "Item 1", onClick: () => {} },
+    { label: "Item 2", onClick: () => {} },
+  ]}
+/>
+```
+
+#### Modal
+
+Modal dialog overlay.
+
+```tsx
+import { Modal } from "plc-core";
+
+<Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Dialog Title">
+  Modal content
+</Modal>
+```
+
+#### Drawer
+
+Side drawer component.
+
+```tsx
+import { Drawer } from "plc-core";
+
+<Drawer
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  side="left"
+>
+  Drawer content
+</Drawer>
+```
+
+#### Popover
+
+Popover tooltip component.
+
+```tsx
+import { Popover } from "plc-core";
+
+<Popover content="Popover content">
+  <Button>Hover me</Button>
+</Popover>
+```
+
+#### Tooltip
+
+Tooltip component.
+
+```tsx
+import { Tooltip } from "plc-core";
+
+<Tooltip content="Tooltip text">
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+#### Burger
+
+Hamburger menu button.
+
+```tsx
+import { Burger } from "plc-core";
+
+<Burger opened={isOpen} onClick={() => setIsOpen(!isOpen)} />
+```
+
+---
+
+### 📐 Layout Components
+
+#### Box
+
+Display container with title and action buttons.
+
+```tsx
+import { Box } from "plc-core";
+
+<Box title="Section Title" buttons={<Button>Add</Button>}>
+  Content
+</Box>
+```
+
+#### Container
+
+Centered container with max-width.
+
+```tsx
+import { Container } from "plc-core";
+
+<Container size="lg">
+  Content
+</Container>
+```
+
+#### Grid
+
+CSS Grid wrapper component.
+
+```tsx
+import { Grid } from "plc-core";
+
+<Grid cols={3} gap="md">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Grid>
+```
+
+**Columns:** `1`, `2`, `3`, `4`, `5`, `6`, `12`  
+**Gap:** `none`, `sm`, `md`, `lg`, `xl`
+
+#### Flex
+
+Flexbox wrapper component.
+
+```tsx
+import { Flex } from "plc-core";
+
+<Flex direction="row" justify="between" align="center" gap="md">
+  <div>Left</div>
+  <div>Right</div>
+</Flex>
+```
+
+**Direction:** `row`, `col`, `row-reverse`, `col-reverse`  
+**Justify:** `start`, `end`, `center`, `between`, `around`, `evenly`  
+**Align:** `start`, `end`, `center`, `stretch`, `baseline`  
+**Gap:** `none`, `sm`, `md`, `lg`, `xl`
+
+#### Stack
+
+Vertical flex container (shorthand for `Flex direction="col"`).
+
+```tsx
+import { Stack } from "plc-core";
+
+<Stack gap="md">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack>
+```
+
+#### Group
+
+Horizontal flex container (shorthand for `Flex direction="row"`).
+
+```tsx
+import { Group } from "plc-core";
+
+<Group gap="sm">
+  <Button>Save</Button>
+  <Button>Cancel</Button>
+</Group>
+```
+
+#### Spacer
+
+Flexible spacing element.
+
+```tsx
+import { Spacer } from "plc-core";
+
+<Flex>
+  <div>Left</div>
+  <Spacer />
+  <div>Right</div>
+</Flex>
+```
+
+#### Divider
+
+Horizontal divider line.
+
+```tsx
+import { Divider } from "plc-core";
+
+<div>Content 1</div>
+<Divider />
+<div>Content 2</div>
+```
+
+---
+
+### 🖥️ Interface Components
+
+#### Shell
+
+Desktop shell container with header, footer, and page management.
+
+```tsx
+import { Shell } from "plc-core";
+
+<Shell
+  header={<Header>Status Bar</Header>}
+  footer={<Footer>Dock</Footer>}
+  pages={[
+    { id: "home", content: <HomePage /> },
+    { id: "about", content: <AboutPage /> },
+  ]}
+  activePage="home"
+  activeAppId="home"
+/>
+```
+
+#### AppIcon
+
+Desktop-style application icon.
+
+```tsx
+import { AppIcon } from "plc-core";
+
+<AppIcon
+  icon={<IconHome />}
+  label="Home"
+  onClick={() => {}}
+/>
+```
+
+#### Header
+
+Application header/status bar.
+
+```tsx
+import { Header } from "plc-core";
+
+<Header>
+  <span>Status info</span>
+</Header>
+```
+
+#### Footer
+
+Application footer/dock bar.
+
+```tsx
+import { Footer } from "plc-core";
+
+<Footer>
+  <AppIcon icon={<IconHome />} label="Home" />
+</Footer>
+```
+
+---
+
+### 📄 Typography
+
+#### Text
+
+Text component with styling options.
+
+```tsx
+import { Text } from "plc-core";
+
+<Text size="lg" weight="bold" align="center">
+  Text content
+</Text>
+```
+
+#### Title
+
+Heading component.
+
+```tsx
+import { Title } from "plc-core";
+
+<Title order={1}>Main Title</Title>
+```
+
+**Order:** `1` (h1) through `6` (h6)
+
+#### Code
+
+Inline code component.
+
+```tsx
+import { Code } from "plc-core";
+
+<Code>const x = 1;</Code>
+```
+
+#### Blockquote
+
+Blockquote component.
+
+```tsx
+import { Blockquote } from "plc-core";
+
+<Blockquote>
+  This is a quote.
+</Blockquote>
+```
+
+#### Kbd
+
+Keyboard key indicator.
+
+```tsx
+import { Kbd } from "plc-core";
+
+Press <Kbd>Ctrl</Kbd> + <Kbd>C</Kbd> to copy
+```
+
+---
+
+## 🎨 Styling
+
+### Glassmorphism
+
+All components support glassmorphism styling through variants:
+
+- **glass** - Standard frosted glass effect
+- **glass-highlight** - Highlighted glass with accent colors
+- **flat** - Solid background (no glass effect)
+
+### Dark Mode
+
+Dark mode is automatically supported. Use the `.dark` class on a parent element:
+
+```tsx
+<div className="dark">
+  <Button variant="glass">Dark Mode Button</Button>
+</div>
+```
+
+### Customization
+
+Since components are built with Tailwind CSS, you can customize them using Tailwind classes:
+
+```tsx
+<Button variant="glass" className="bg-blue-500/50">
+  Custom Button
+</Button>
+```
+
+---
+
+## 🛠️ Development
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/marius-patrik/plc-core.git
+cd plc-core
+
+# Install dependencies
+npm install
+```
+
+### Build
+
+Build the library:
+
+```bash
+npm run build
+```
+
+### Watch Mode
+
+Build in watch mode for development:
+
+```bash
+npm run dev
+```
+
+### Linting & Formatting
+
+```bash
+# Lint and fix
+npm run lint
+
+# Format code
+npm run format
+
+# Check only (no fixes)
+npm run lint:check
+```
+
+---
+
+## 📦 Package Structure
+
+```
+plc-core/
+├── dist/              # Built output
+│   ├── esm/          # ES Module build
+│   ├── cjs/          # CommonJS build
+│   └── index.d.ts    # Type definitions
+├── src/
+│   ├── components/   # React components
+│   ├── styles.css    # Global styles
+│   └── index.ts      # Main export
+└── package.json
+```
+
+---
+
+## 📝 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run build` | Build the library |
+| `npm run dev` | Build in watch mode |
+| `npm run lint` | Lint and fix with Biome |
+| `npm run format` | Format code with Biome |
+| `npm run lint:check` | Check linting without fixing |
+
+---
+
+## 🔧 Configuration
+
+### Rslib Configuration
+
+The library uses Rslib for building. Configuration is in `rslib.config.ts`.
+
+### TypeScript Configuration
+
+TypeScript settings are in `tsconfig.json` with strict type checking.
+
+### Biome Configuration
+
+Code formatting and linting rules are in `biome.json`.
+
+---
+
+## 📦 Exports
+
+The library exports both ESM and CJS formats:
+
+- **ESM**: `dist/esm/index.js`
+- **CJS**: `dist/cjs/index.cjs`
+- **Types**: `dist/index.d.ts`
+- **Styles**: `dist/esm/index.css`
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! When contributing:
+
+1. Follow the existing code style
+2. Add TypeScript types for all props
+3. Include examples in documentation
+4. Ensure components are accessible
+5. Test in both light and dark modes
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🔗 Related Projects
+
+- **[plc-core-types](../plc-core-types/)** - TypeScript type definitions
+- **[plc-ui](../plc-ui/)** - Desktop UI library
+- **[plc-docs](../plc-docs/)** - Documentation website
+- **[plc-playground](../plc-playground/)** - Component playground
+
+---
+
+## 📞 Support
+
+For questions, issues, or contributions, please visit the main [PLC repository](https://github.com/marius-patrik/plc).
+
+---
+
+<div align="center">
+
+**Built with ❤️ for beautiful UIs**
+
+</div>

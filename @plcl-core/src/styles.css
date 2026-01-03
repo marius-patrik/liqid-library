@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Color Environment Variables */
+:root {
+	/* Main/Accent Color */
+	--plc-main-color: 148 163 184; /* slate-400 */
+	--plc-main-color-rgb: 148, 163, 184;
+
+	/* Background Colors */
+	--plc-bg-color: 244 244 245; /* zinc-100 */
+	--plc-bg-color-rgb: 244, 244, 245;
+	--plc-bg-dark: 24 24 27; /* zinc-900 */
+	--plc-bg-dark-rgb: 24, 24, 27;
+
+	/* Glass Background Colors (Light) */
+	--plc-glass-bg-start: 244 244 245; /* zinc-100 */
+	--plc-glass-bg-end: 228 228 231; /* zinc-200 */
+	--plc-glass-bg-opacity: 0.3;
+
+	/* Glass Border Colors (Light) */
+	--plc-glass-border-start: 228 228 231; /* zinc-200 */
+	--plc-glass-border-end: 212 212 216; /* zinc-300 */
+	--plc-glass-border-opacity: 0.15;
+
+	/* Text Colors */
+	--plc-text-color: 24 24 27; /* zinc-900 */
+	--plc-text-dark: 244 244 245; /* zinc-100 */
+}
+
+.dark {
+	/* Glass Background Colors (Dark) */
+	--plc-glass-bg-start: 39 39 42; /* zinc-800 */
+	--plc-glass-bg-end: 24 24 27; /* zinc-900 */
+
+	/* Glass Border Colors (Dark) */
+	--plc-glass-border-start: 82 82 91; /* zinc-600 */
+	--plc-glass-border-end: 63 63 70; /* zinc-700 */
+}
+
+/* Animations */
+@keyframes scale-in {
+	from {
+		transform: scale(0.95);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes scale-out {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+	to {
+		transform: scale(0.95);
+		opacity: 0;
+	}
+}
+
+@layer base {
+	/* Page Background - matches glass background */
+	html,
+	body {
+		background: linear-gradient(135deg, rgb(244, 244, 245), rgb(228, 228, 231));
+		background: linear-gradient(
+			135deg,
+			rgb(var(--plc-glass-bg-start)),
+			rgb(var(--plc-glass-bg-end))
+		);
+		min-height: 100vh;
+		background-attachment: fixed;
+	}
+
+	.dark html,
+	.dark body {
+		background: linear-gradient(135deg, rgb(39, 39, 42), rgb(24, 24, 27));
+		background: linear-gradient(
+			135deg,
+			rgb(var(--plc-glass-bg-start)),
+			rgb(var(--plc-glass-bg-end))
+		);
+		background-attachment: fixed;
+	}
+}
+
+@layer utilities {
+	/* Shell background utility class */
+	.shell-bg {
+		background: linear-gradient(135deg, rgb(244, 244, 245), rgb(228, 228, 231));
+		background: linear-gradient(
+			135deg,
+			rgb(var(--plc-glass-bg-start)),
+			rgb(var(--plc-glass-bg-end))
+		);
+		background-attachment: fixed;
+	}
+
+	.dark .shell-bg {
+		background: linear-gradient(135deg, rgb(39, 39, 42), rgb(24, 24, 27));
+		background: linear-gradient(
+			135deg,
+			rgb(var(--plc-glass-bg-start)),
+			rgb(var(--plc-glass-bg-end))
+		);
+	}
+}
+
+@layer utilities {
+	/* Animations */
+	.animate-scale-in {
+		animation: scale-in 0.15s ease-out;
+	}
+	.animate-scale-out {
+		animation: scale-out 0.15s ease-out forwards;
+	}
+
+	/* Variant styles */
+	.variant-glass {
+		@apply backdrop-blur-xs relative;
+		color: rgb(var(--plc-text-color));
+		background: linear-gradient(
+			135deg,
+			rgb(var(--plc-glass-bg-start) / var(--plc-glass-bg-opacity)),
+			rgb(var(--plc-glass-bg-end) / var(--plc-glass-bg-opacity))
+		);
+		border: 1px solid transparent;
+	}
+
+	.variant-glass::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		padding: 1px;
+		background: linear-gradient(
+			45deg,
+			rgb(var(--plc-glass-border-start) / var(--plc-glass-border-opacity)),
+			rgb(var(--plc-glass-border-end) / var(--plc-glass-border-opacity))
+		);
+		-webkit-mask: linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+		mask-composite: exclude;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.dark .variant-glass {
+		color: rgb(var(--plc-text-dark));
+	}
+
+	.variant-glass-highlight {
+		@apply backdrop-blur-xs;
+		color: rgb(var(--plc-text-color));
+		border: 1px solid rgb(var(--plc-glass-border-start) / 0.15);
+		background: rgb(var(--plc-glass-bg-end) / 0.3);
+	}
+
+	.dark .variant-glass-highlight {
+		color: rgb(var(--plc-text-dark));
+		border-color: rgb(var(--plc-glass-border-start) / 0.15);
+		background: rgb(var(--plc-glass-bg-start) / 0.3);
+	}
+
+	.variant-flat {
+		background: rgb(var(--plc-bg-color));
+		border: 0;
+		color: rgb(var(--plc-text-color));
+	}
+
+	.dark .variant-flat {
+		background: rgb(var(--plc-bg-dark));
+		color: rgb(var(--plc-text-dark));
+	}
+
+	.variant-outline {
+		border: 1px solid rgb(var(--plc-glass-border-start) / 0.5);
+		background: transparent;
+		color: rgb(var(--plc-text-color));
+	}
+
+	.dark .variant-outline {
+		border-color: rgb(var(--plc-glass-border-start) / 0.5);
+		color: rgb(var(--plc-text-dark));
+	}
+
+	.variant-transparent {
+		background: transparent;
+		border: 0;
+		color: rgb(var(--plc-text-color));
+	}
+
+	.dark .variant-transparent {
+		color: rgb(var(--plc-text-dark));
+	}
+
+	.variant-unstyled {
+		background: transparent !important;
+		border: 0 !important;
+		color: inherit;
+		backdrop-filter: none !important;
+		box-shadow: none !important;
+	}
+
+	.dark .variant-unstyled {
+		color: inherit;
+	}
+}
