@@ -85,13 +85,19 @@
     {
       "label": "Git: Stage, Commit & Push",
       "type": "shell",
-      "command": "git add -A && git commit -m \"${input:commitMessage}\" && git push",
+      "command": "git add -A; git commit -m \"${input:commitMessage}\"; git push",
       "problemMatcher": []
     },
     {
       "label": "Git: Stage, Commit & Force Push",
       "type": "shell",
-      "command": "git add -A && git commit -m \"${input:commitMessage}\" && git push --force",
+      "command": "git add -A; git commit -m \"${input:commitMessage}\"; git push --force",
+      "problemMatcher": []
+    },
+    {
+      "label": "Git: Force Push",
+      "type": "shell",
+      "command": "git push --force",
       "problemMatcher": []
     }
   ],
